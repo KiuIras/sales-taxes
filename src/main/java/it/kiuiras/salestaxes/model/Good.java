@@ -27,14 +27,6 @@ public class Good implements Item {
   private double price;
 
   /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean isExempt() {
-    return !category.isEmpty();
-  }
-
-  /**
    * Gets a {@link Good} from its textual description.
    * <p>The description should be formed by:</p>
    * <p>QUANTITY description with the *imported* word if necessary* at *PRICE</p>
@@ -63,8 +55,8 @@ public class Good implements Item {
     } catch (NumberFormatException nfe) {
       System.out.println(
           "Can't read quantity for the for good ".concat(good.getName()).concat(". Assume 1."));
-      log.error("Can't read quantity for the good {}. Assume 1", good.getName());
-      log.trace("Exception caught. {}", nfe.getMessage(), nfe);
+      log.error("Can't read quantity for the good {}. Assume 1. {}", good.getName(),
+          nfe.getMessage(), nfe);
     }
     good.setQuantity(quantity);
 
@@ -82,12 +74,20 @@ public class Good implements Item {
     } catch (NumberFormatException nfe) {
       System.out.println("Can't read price for the good ".concat(good.getName())
           .concat(" is not valid. Uses 0 instead."));
-      log.error("Can't read price for the good {}. Uses 0 instead.", good.getName());
-      log.trace("Exception caught. {}", nfe.getMessage(), nfe);
+      log.error("Can't read price for the good {}. Uses 0 instead. {}", good.getName(),
+          nfe.getMessage(), nfe);
     }
     good.setPrice(price);
 
     return good;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean isExempt() {
+    return !category.isEmpty();
   }
 
 }

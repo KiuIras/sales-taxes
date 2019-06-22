@@ -32,8 +32,7 @@ public class FileBasketReader implements BasketReader<Path> {
       });
     } catch (Exception e) {
       System.out.println("Can't read the input.");
-      log.error("Error while reading the input");
-      log.trace("Exception caught. {}", e.getMessage(), e);
+      log.error("Error while reading the input. {}", e.getMessage(), e);
     }
     return new Basket<>(items);
   }

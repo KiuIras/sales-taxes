@@ -33,7 +33,8 @@ public class ConfigurationHolder {
 
   @Getter
   private String categoryAnalyzer = "FileCategory";
-  @Getter @Setter
+  @Getter
+  @Setter
   private String categoryFilePath;
 
   /**
@@ -62,34 +63,35 @@ public class ConfigurationHolder {
       properties.load(new FileInputStream(CONFIGURATION_FILE_PATH));
       log.trace("Read from file: {}", properties);
     } catch (IOException e) {
-      log.error("Error in the read of the configuration file. Default values will be used");
-      log.trace("Exception caught. {}", e.getMessage(), e);
+      log.error("Error in the read of the configuration file. Default values will be used. {}",
+          e.getMessage(), e);
     }
     if (!properties.isEmpty()) {
       try {
         basicSalesTax = Double.parseDouble(properties.getProperty("BasicSalesTax"));
       } catch (NullPointerException npe) {
-        log.warn("The basic sales taxes value is not configured: default value will be used");
-        log.trace("Exception caught. {}", npe.getMessage(), npe);
+        log.warn("The basic sales taxes value is not configured: default value will be used. {}",
+            npe.getMessage(), npe);
       } catch (NumberFormatException nfe) {
-        log.warn("The basic sales taxes value is not a valid number: default value will be used");
-        log.trace("Exception caught. {}", nfe.getMessage(), nfe);
+        log.warn(
+            "The basic sales taxes value is not a valid number: default value will be used. {}",
+            nfe.getMessage(), nfe);
       }
       try {
         importDuty = Double.parseDouble(properties.getProperty("ImportDuty"));
       } catch (NullPointerException npe) {
-        log.warn("The import duty value is not configured: default value will be used");
-        log.trace("Exception caught. {}", npe.getMessage(), npe);
+        log.warn("The import duty value is not configured: default value will be used. {}",
+            npe.getMessage(), npe);
       } catch (NumberFormatException nfe) {
-        log.warn("The import duty value is not a valid number: default value will be used");
-        log.trace("Exception caught. {}", nfe.getMessage(), nfe);
+        log.warn("The import duty value is not a valid number: default value will be used. {}",
+            nfe.getMessage(), nfe);
       }
       exemption = Arrays.asList(properties.getProperty("Exemption").split(","));
       try {
         categoryAnalyzer = properties.getProperty("CategoryAnalyzer");
       } catch (NullPointerException npe) {
-        log.warn("No Category Analyzer is configured: default Analyzer will be used");
-        log.trace("Exception caught. {}", npe.getMessage(), npe);
+        log.warn("No Category Analyzer is configured: default Analyzer will be used. {}",
+            npe.getMessage(), npe);
       }
     }
   }

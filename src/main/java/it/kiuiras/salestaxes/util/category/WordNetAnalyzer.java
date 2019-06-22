@@ -27,8 +27,7 @@ public class WordNetAnalyzer implements CategoryAnalyzer {
     try {
       dictionary = Dictionary.getDefaultResourceInstance();
     } catch (JWNLException e) {
-      log.error("Error while initializing the WordNet dictionary");
-      log.trace("Exception caught. {}", e.getMessage(), e);
+      log.error("Error while initializing the WordNet dictionary. {}", e.getMessage(), e);
     }
   }
 
@@ -62,8 +61,7 @@ public class WordNetAnalyzer implements CategoryAnalyzer {
           });
         }
       } catch (JWNLException e) {
-        log.warn("Error while analyzing the given text");
-        log.trace("Exception caught. {}", e.getMessage(), e);
+        log.warn("Error while analyzing the given text. {}", e.getMessage(), e);
       }
     });
     return categorySet;

@@ -27,13 +27,12 @@ public class FileReceiptWriter implements ReceiptWriter<Path> {
         path.getParent().toFile().mkdir();
       }
       path.toFile().createNewFile();
-      BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile()));
-      writer.write(receipt.printReceipt());
-      writer.close();
+      try (BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile()))) {
+        writer.write(receipt.printReceipt());
+      }
     } catch (Exception e) {
       System.out.println("Can't write the output.");
-      log.error("Error while writing the ouput");
-      log.trace("Exception caught. {}", e.getMessage(), e);
+      log.error("Error while writing the output. {}", e.getMessage(), e);
     }
   }
 }

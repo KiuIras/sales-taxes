@@ -17,7 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FileCategoryAnalyzer implements CategoryAnalyzer {
 
-  private final static String CATEGORY_FILE_PATH = ConfigurationHolder.getInstance().getCategoryFilePath();
+  private final static String CATEGORY_FILE_PATH = ConfigurationHolder.getInstance()
+      .getCategoryFilePath();
 
   private Properties categoryMap;
 
@@ -31,8 +32,8 @@ public class FileCategoryAnalyzer implements CategoryAnalyzer {
       categoryMap.load(new FileInputStream(CATEGORY_FILE_PATH));
     } catch (IOException e) {
       log.error(
-          "Error while retrieving exempt categories from file: the exemption mechanism will be deactivated");
-      log.trace("Exception caught. {}", e.getMessage(), e);
+          "Error while retrieving exempt categories from file: the exemption mechanism will be deactivated. {}",
+          e.getMessage(), e);
     }
   }
 
