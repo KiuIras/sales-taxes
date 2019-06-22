@@ -23,7 +23,9 @@ public class FileReceiptWriter implements ReceiptWriter<Path> {
   @Override
   public void writeReceipt(Receipt receipt, Path path) {
     try {
-      path.getParent().toFile().mkdir();
+      if (!path.toAbsolutePath().getParent().toFile().exists()) {
+        path.getParent().toFile().mkdir();
+      }
       path.toFile().createNewFile();
       BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile()));
       writer.write(receipt.printReceipt());

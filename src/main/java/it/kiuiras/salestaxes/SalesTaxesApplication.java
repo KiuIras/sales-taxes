@@ -69,10 +69,10 @@ public class SalesTaxesApplication {
     });
     Receipt receipt = new Receipt(receiptItems);
 
+    log.debug("Produces the output...");
     /**
      * Produces the output
      */
-    log.debug("Produces the output...");
     ReceiptWriter receiptWriter = new FileReceiptWriter();
     Path outputFile = Paths.get(outputPath);
     receiptWriter.writeReceipt(receipt, outputFile);

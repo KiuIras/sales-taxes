@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -cp "*" it.kiuiras.salestaxes.SalesTaxesApplication -Dlog4j.configurationFile=conf/log4j2.xml $@
+java -Dlog4j.configurationFile=conf/log4j2.xml -cp "*" it.kiuiras.salestaxes.SalesTaxesApplication $@

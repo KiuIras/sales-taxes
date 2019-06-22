@@ -37,7 +37,7 @@ public class FileCategoryAnalyzer implements CategoryAnalyzer {
   }
 
   /**
-   * Gets the list of exempt categories analyzing the given text with the WordNet library.
+   * Gets the list of exempt categories reading it from the file.
    *
    * @param text the text to analyze
    * @return the list of exempt categories

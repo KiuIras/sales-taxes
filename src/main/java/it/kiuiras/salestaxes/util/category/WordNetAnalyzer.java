@@ -13,7 +13,7 @@ import net.sf.extjwnl.dictionary.Dictionary;
 /**
  * {@link WordNetAnalyzer} provides methods to analyze text using the WordNet library
  * (https://wordnet.princeton.edu/).
- * <p>Only for test purpose: the results may be incorrect.</p>
+ * <p>Only for test purpose: the results may be incorrect!</p>
  */
 @Slf4j
 public class WordNetAnalyzer implements CategoryAnalyzer {
